@@ -11,7 +11,7 @@ jobs:
       - name: HubSpot Deploy Action
         uses: HubSpot/hubspot-cms-deploy-action@v1.5
         with:
-          src_dir: ./dev
-          dest_dir: ./dev
+          src_dir: ./src #ここを変更する（github側のディレクトリ）
+          dest_dir: ./dev #ここを変更する（upload先のHubSpotディレクトリ）
           portal_id: ${{ secrets.hubspot_portal_id }}
           personal_access_key: ${{ secrets.hubspot_personal_access_key }}
