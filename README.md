@@ -46,23 +46,37 @@ docker -v
 ### 1. リポジトリの作成
 GitHub上で新しいリポジトリを作成します。ブランチは`main`と`develop`を作成し、これらのブランチを保護設定します。
 
+
 ### 2. メンバーの招待
 プロジェクトメンバーをリポジトリに招待します。
+
 
 ### 3. シークレットの登録
 プロジェクトリーダーからリポジトリのURLを受け取り、GitHub Actionsで利用するシークレットを登録します。
 - [GitHub Actionsでのシークレット利用ガイド](https://docs.github.com/ja/actions/security-guides/using-secrets-in-github-actions)
 - [GitHub Actions環境変数とシークレットの利用方法](https://dev.classmethod.jp/articles/github-actions-environment-secrets-and-environment-variables/)
 
-### 5. ローカルPCでこのリポジトリをクローン
 
-### 6. Git Actionsの設定ファイルを生成（.github/workflows/main.yml）
-GitHub Actionsを利用してHubSpotのCMSデプロイを設定するための設定ファイル（`.github/workflows/main.yml`）を生成します。
+### 5. ローカルPCでこのリポジトリをクローン
+```bash
+docker-compose up
+docker-compose ps //>>コンテナ名が出てくる
+docker container exec -it コンテナ名 bash
+git clone このリポジトリ
+```
+
+
+### 6. Git Actionsの設定ファイルを設定（.github/workflows/main.yml）
+GitHub Actionsを利用してHubSpotのCMSデプロイを設定するための設定ファイル（`.github/workflows/main.yml`）を更新します。主に、デプロイ先（クライアント）を指定します。
+
 - [GitHub Marketplace - HubSpot CMS Deploy Action](https://github.com/marketplace/actions/hubspot-cms-deploy?__hstc=191447093.e2828a7aeadc4cbbb81fa971745616d3.1684904509151.1696319292546.1696324978632.77&__hssc=191447093.1.1696468240347&__hsfp=2849964017&hsCtaTracking=e0132707-395d-4617-bd9d-0b21c8b129d5%7Ce4078581-d84c-446e-9399-ce2ebcb21fae)
 - [GitHub Actions設定ファイルのサンプル](https://docs.google.com/document/d/13HcLaZsA53W8PjleEQDPkh8bKRVLOvmv_22HrcvYQCs/edit)
 
+
 ### 7. 生成したリポジトリに初回コミット
 生成したボイラーテンプレートを含むリポジトリに初回のコミットを行います。
+
+
 
 以下は、プロジェクトの中でローカルPC上で各個人が行う作業手順をMarkdown形式で表現したものです。
 
@@ -72,14 +86,17 @@ GitHub Actionsを利用してHubSpotのCMSデプロイを設定するための�
 おすすめは、ユーザーディレクトリに`/dev`ディレクトリを生成してその中にプロジェクトディレクトリを生成します。
 
 ```bash
-$ mkdir /path/to/folder
+mkdir /path/to/folder
 ```
 
 ### 2. ベースとなるリポジトリのクローン
 プロジェクトリーダーもしくは開発リーダーからリポジトリのURLを取得し、以下のコマンドでクローンします。アクセス権がない場合は、認証を行います。
 
 ```bash
-$ git clone リポジトリのURL
+docker-compose up
+docker-compose ps //>>コンテナ名が出てくる
+docker container exec -it コンテナ名 bash
+git clone リポジトリのURL
 ```
 
 ### 3. ブランチの作成
@@ -92,15 +109,15 @@ $ git clone リポジトリのURL
 変更したファイルをステージングし、コミットします。
 
 ```bash
-$ git add -A
-$ git commit -m "message"
+git add -A
+git commit -m "message"
 ```
 
 ### 5. リモートリポジトリにプッシュ
 ローカルで作成したブランチをリモートリポジトリにプッシュします。詳細は[こちら](https://atmarkit.itmedia.co.jp/ait/articles/2110/01/news034.html)を参照してください。
 
 ```bash
-$ git push
+git push
 ```
 
 ### 6. Pull Requestの作成
@@ -131,5 +148,7 @@ GitHub上でプルリクエストを確認します。
 
 ### 参考
 [https://developers.hubspot.jp/docs/cms/guides/github-integration](https://developers.hubspot.jp/docs/cms/guides/github-integration)
+
+[https://www.asobou.co.jp/blog/web/githistory](https://www.asobou.co.jp/blog/web/githistory)
 
 
