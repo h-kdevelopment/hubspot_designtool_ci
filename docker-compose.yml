@@ -1,0 +1,10 @@
+version: '3.3'
+
+services:
+  my_app:
+    build: .
+    container_name: hubspot_develop_env
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true
