@@ -1,9 +1,9 @@
-name: main
+name: develop
 
 on:
   push:
     branches:
-    - main
+    - develop
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -14,6 +14,6 @@ jobs:
         uses: HubSpot/hubspot-cms-deploy-action@v1.5
         with:
           src_dir: ./src #ここを変更する（github側のディレクトリ）
-          dest_dir: ./dev #ここを変更する（upload先のHubSpotディレクトリ）
-          portal_id: ${{ secrets.hubspot_portal_id }}
-          personal_access_key: ${{ secrets.hubspot_personal_access_key }}
+          dest_dir: ./deliverables #ここを変更する（upload先のHubSpotディレクトリ）
+          portal_id: ${{ secrets.develop_hubspot_portal_id }}
+          personal_access_key: ${{ secrets.develop_hubspot_personal_access_key }}
