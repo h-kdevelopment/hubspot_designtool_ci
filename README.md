@@ -57,12 +57,11 @@ GitHub上で新しいリポジトリを作成します。ブランチは`main`�
 - [GitHub Actions環境変数とシークレットの利用方法](https://dev.classmethod.jp/articles/github-actions-environment-secrets-and-environment-variables/)
 
 
-### 5. ローカルPCでこのリポジトリをクローン
+### 5. ローカルPCでこのリポジトリのファイルをDLして、フォルダ名をrenameしてそのフォルダまでコマンドで入る
 ```bash
 docker-compose up
 docker-compose ps //>>コンテナ名が出てくる
-docker container exec -it コンテナ名 bash
-git clone このリポジトリ
+docker container exec -it hubspot_develop_env bash
 ```
 
 
@@ -73,7 +72,11 @@ GitHub Actionsを利用してHubSpotのCMSデプロイを設定するための�
 - [GitHub Actions設定ファイルのサンプル](https://docs.google.com/document/d/13HcLaZsA53W8PjleEQDPkh8bKRVLOvmv_22HrcvYQCs/edit)
 
 
-### 7. 生成したリポジトリに初回コミット
+### 7. 生成したリポジトリに初回コミット（コンテナの中に入った状態にしてください）
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "youremail@yourdomain.com"
+```
 生成したボイラーテンプレートを含むリポジトリに初回のコミットを行います。
 
 
